@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark-color: #0C1014;
+}
+
+@font-face {
+  font-family: segoe;
+  src: url('./assets/fonts/SegoeUIVF.ttf');
+}
+
+@font-face {
+  font-family: optimistic;
+  src: url('./assets/fonts/optimistic.ttf');
+}
