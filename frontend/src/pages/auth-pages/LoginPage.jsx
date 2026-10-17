@@ -51,7 +51,6 @@ const LoginPage = () => {
                 </form>
             </div>
 
-            
             <div className='w-full flex flex-col items-center gap-5 mb-7'>
                 <button className='text-[#5DB2FE] w-full py-2 rounded-3xl border border-[#5DB2FE] font-semibold'>
                     <Link to={'/signup'}>Create New Account</Link>

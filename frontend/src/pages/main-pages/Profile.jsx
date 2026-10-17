@@ -38,7 +38,7 @@ const Profile = () => {
             <h4>Kush ki profile bio</h4>
           </div>
         </div>
-        <div className="more-btns  w-full flex gap-2">
+        <div className="more-btns w-full flex gap-2">
           <button className='bg-[#363C44] w-[45%] py-1 rounded-lg'>
             Edit Profile
           </button>
