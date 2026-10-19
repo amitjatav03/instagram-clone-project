@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 const NavigationBar = () => {
   return (
-    <div className='fixed w-full bottom-0 border-t border-t-zinc-700 flex justify-between py-3 px-6'>
+    <div className='fixed w-full bottom-0 border-t border-t-zinc-700 bg-[#0C1014] flex justify-between py-3 px-6'>
         <Link to={'/'} className='text-[1.75rem]'><GoHomeFill /></Link>
         <Link to={'/search'} className='text-[1.75rem]'><IoSearchOutline /></Link>
         <Link to={'/explore'} className='text-[1.75rem]'><LuSquarePlay /></Link>
