@@ -31,7 +31,7 @@ const Home = () => {
           <StoryIcon username={'amit_35'} />
         </div>
       </div>
-      <div className="recent-posts-section flex flex-col gap-5">
+      <div className="recent-posts-section flex flex-col">
         <PostCard />
         <PostCard />
         <PostCard />
