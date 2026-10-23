@@ -1,6 +1,6 @@
 import userIcon from '../../assets/images/user-icon-default.png'
 import { HiDotsHorizontal } from "react-icons/hi";
-import { FaRegHeart } from "react-icons/fa";
+import { FaBookmark, FaHeart, FaRegHeart } from "react-icons/fa";
 import { IoChatbubbleOutline } from "react-icons/io5";
 import { HiMiniArrowPathRoundedSquare } from "react-icons/hi2";
 import { PiPaperPlaneTiltBold } from "react-icons/pi";
@@ -8,9 +8,38 @@ import { VscVerifiedFilled } from "react-icons/vsc";
 import { FaRegBookmark } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 
-const PostCard = () => {
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+// import required modules
+import { Pagination } from 'swiper/modules';
+
+const PostCard = ({ post }) => {
+    console.log("post ka data hai", post)
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef(null);
+
+
+    const formatNumbers = (n) => {
+        if(n >= 1000000000) {
+            return (n / 1000000000).toFixed(1) + "B";
+        }
+
+        if(n >= 1000000) {
+            return (n / 1000000).toFixed(1) + "M";
+        }
+
+        if(n >= 1000) {
+            return (n / 1000).toFixed(1) + "K";
+        }
+
+        return n.toString();
+    };
+
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -35,8 +64,12 @@ const PostCard = () => {
                         <img className='w-11 h-11' src={userIcon} alt="" />
                     </div>
 
-                    <div>
-                        <p className="text-white flex gap-2 items-center">_ayushh._.kumar <span className='text-[#0276CF]'><VscVerifiedFilled /></span> <span>   </span></p>
+                    <div className='flex items-center gap-2'>
+                        <p className="text-white">{post.username}</p>
+                        {
+                            post.verified &&
+                            <span className='text-[#0276CF]'><VscVerifiedFilled /></span>
+                        }
                         {/* <p className="text-white">Bhopal, Madhya Pradesh</p> */}
                     </div>
 
@@ -63,43 +96,66 @@ const PostCard = () => {
 
             </div>
 
-            {/* ----------------------------------------------------------------------------------- <i class="ri-more-2-fill"></i>*/}
-
             <div className='flex flex-col items-center'>
-                {/* <ImHeart id='instagram-heart' 
-                className='absolute instagram-heart text-red-600 text-8xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' /> */}
-                <img className='mt-3' src={'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D'} alt="tokyo" />
-                <button className='text-white text-3xl'><HiDotsHorizontal /></button>
+                <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+                    {
+                        post.media.map(postMedia => (
+                            <SwiperSlide>
+                                {
+                                    postMedia.type === 'video' 
+                                    ? <video className='w-full h-full object-cover' src={postMedia.url} autoPlay muted></video>
+                                    : <img src={postMedia.url} alt="" />
+                                }
+                            </SwiperSlide>
+                        ))
+                    }
+                </Swiper>
 
             </div>
 
-            {/* ----------------------------------------------------------------------------------- */}
 
             <div className='px-3'>
                 <div className='text-white flex justify-between  ml-2' >
-                    <div className='flex gap-2 text-2xl cursor-pointer items-center'>
-                        <FaRegHeart />
-                        <p className='text-[1rem]' >9.5k</p>
-                        <IoChatbubbleOutline />
-                        <p className='text-[1rem]' >148</p>
-                        <HiMiniArrowPathRoundedSquare />
-                        <p className='text-[1rem]' >177</p>
+                    <div className='flex gap-3 text-2xl cursor-pointer items-center'>
+                        <div className='flex gap-2'>
+                            {
+                                post.isLiked 
+                                ? <FaHeart className='text-red-500' />
+                                : <FaRegHeart />
+                            }
+                            <p className='text-[1rem]' >
+                                {formatNumbers(post.likes)}
+                            </p>
+                        </div>
+
+                        <div className='flex gap-2'>
+                            <IoChatbubbleOutline />
+                            <p className='text-[1rem]' >
+                                {formatNumbers(post.comments)}
+                            </p>
+                        </div>
                         <PiPaperPlaneTiltBold />
                     </div>
-                    <div className='text-[1.2rem] cursor-pointer'>
-                        <FaRegBookmark />
+                    <div className='text-[1.4rem] cursor-pointer'>
+                        {
+                            (post.isSaved) 
+                            ? <FaBookmark /> 
+                            : <FaRegBookmark />
+                        }
                     </div>
                 </div>
             </div>
 
             <div className='p-3'>
-                <p className='text-white'>
-                    ayushh..kumar 📍 Tokyo, Japan
+                <p className='caption text-white'>
+                    {post.caption}
+                    <br />
 
-                    Somewhere I'd rather be. 🌃
-                    Collecting moments, one city at a time. <br />
-
-                    <span className='text-[#0276CF]'>#Tokyo #TravelDiaries #CityVibes</span>
+                    <span className='text-[#0276CF]'>
+                        {
+                            post.hashtags.map(hashtag => "#" + hashtag + " ")
+                        }
+                    </span>
 
                 </p>
 

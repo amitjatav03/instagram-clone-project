@@ -3,6 +3,342 @@ import { FaRegHeart } from "react-icons/fa";
 import StoryIcon from "../../components/stories-components/StoryIcon";
 import PostCard from "../../components/post-components/PostCard";
 
+
+
+const postsData = [
+  {
+    id: 1,
+    username: "_ayushh._kumar",
+    fullName: "Ayush Kumar",
+    avatar: "https://i.pravatar.cc/150?img=12",
+    verified: true,
+    location: "Tokyo, Japan",
+    media: [
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1080&q=85"
+      }
+    ],
+    caption: "Somewhere I'd rather be. 🌆 Collecting moments, one city at a time.",
+    hashtags: ["Tokyo", "TravelDiaries", "CityVibes"],
+    likes: 9500,
+    comments: 1483,
+    reposts: 177,
+    shares: 82,
+    createdAt: "2h",
+    isLiked: false,
+    isSaved: false
+  },
+  {
+    id: 2,
+    username: "riya.sharma",
+    fullName: "Riya Sharma",
+    avatar: "https://i.pravatar.cc/150?img=47",
+    verified: false,
+    location: "Manali, India",
+    media: [
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+      {
+        type: "video",
+        url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      }
+    ],
+    caption: "Mountains are calling, and I must go. 🏔️❄️",
+    hashtags: ["Mountains", "NatureLovers", "Travel"],
+    likes: 2456235,
+    comments: 89,
+    reposts: 34,
+    shares: 21,
+    createdAt: "4h",
+    isLiked: false,
+    isSaved: true
+  },
+  {
+    id: 3,
+    username: "rahul.verma",
+    fullName: "Rahul Verma",
+    avatar: "https://i.pravatar.cc/150?img=11",
+    verified: true,
+    location: "Mumbai, India",
+    media: [
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/movie.mp4"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "video",
+        url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      }
+    ],
+    caption: "Golden skies, city lights, and a thousand stories. 🌃",
+    hashtags: ["Mumbai", "NightPhotography", "CityLights"],
+    likes: 12800,
+    comments: 321,
+    reposts: 205,
+    shares: 119,
+    createdAt: "6h",
+    isLiked: true,
+    isSaved: false
+  },
+  {
+    id: 4,
+    username: "priya.creates",
+    fullName: "Priya Singh",
+    avatar: "https://i.pravatar.cc/150?img=44",
+    verified: false,
+    location: "Jaipur, India",
+    media: [
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1080&q=85"
+      }
+    ],
+    caption: "A little pink, a little history, and a lot of magic. 🩷",
+    hashtags: ["Jaipur", "IncredibleIndia", "Architecture"],
+    likes: 3872,
+    comments: 104,
+    reposts: 65,
+    shares: 43,
+    createdAt: "8h",
+    isLiked: false,
+    isSaved: false
+  },
+  {
+    id: 5,
+    username: "dev.codes",
+    fullName: "Dev Patel",
+    avatar: "https://i.pravatar.cc/150?img=13",
+    verified: false,
+    location: "Bengaluru, India",
+    media: [
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "video",
+        url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1080&q=85"
+      }
+    ],
+    caption: "Coffee ☕, clean code, and fixing bugs at 2 AM. Developer life!",
+    hashtags: ["WebDevelopment", "CodingLife", "Programmer"],
+    likes: 876,
+    comments: 57,
+    reposts: 19,
+    shares: 12,
+    createdAt: "10h",
+    isLiked: false,
+    isSaved: true
+  },
+  {
+    id: 6,
+    username: "ananya.travels",
+    fullName: "Ananya Gupta",
+    avatar: "https://i.pravatar.cc/150?img=49",
+    verified: true,
+    location: "Bali, Indonesia",
+    media: [
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+      {
+        type: "video",
+        url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/movie.mp4"
+      },
+      {
+        type: "video",
+        url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      }
+    ],
+    caption: "Paradise found. 🌴🌊 Leaving a little piece of my heart here.",
+    hashtags: ["Bali", "BeachLife", "Wanderlust"],
+    likes: 18900,
+    comments: 426,
+    reposts: 312,
+    shares: 201,
+    createdAt: "12h",
+    isLiked: false,
+    isSaved: false
+  },
+  {
+    id: 7,
+    username: "foodie_aarav",
+    fullName: "Aarav Mehta",
+    avatar: "https://i.pravatar.cc/150?img=15",
+    verified: false,
+    location: "Delhi, India",
+    media: [
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1080&q=85"
+      }
+    ],
+    caption: "Good food, good mood. 🍕 Tell me this doesn't look amazing!",
+    hashtags: ["Foodie", "PizzaLovers", "FoodPhotography"],
+    likes: 1643,
+    comments: 92,
+    reposts: 27,
+    shares: 68,
+    createdAt: "14h",
+    isLiked: true,
+    isSaved: false
+  },
+  {
+    id: 8,
+    username: "meera.clicks",
+    fullName: "Meera Joshi",
+    avatar: "https://i.pravatar.cc/150?img=45",
+    verified: false,
+    location: "Kerala, India",
+    media: [
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1080&q=85"
+      }
+    ],
+    caption: "Some moments deserve to be remembered forever. 🌿📸",
+    hashtags: ["Photography", "Nature", "PeacefulPlaces"],
+    likes: 5621,
+    comments: 137,
+    reposts: 88,
+    shares: 49,
+    createdAt: "16h",
+    isLiked: false,
+    isSaved: false
+  },
+  {
+    id: 9,
+    username: "fitness_with_adi",
+    fullName: "Aditya Singh",
+    avatar: "https://i.pravatar.cc/150?img=14",
+    verified: true,
+    location: "Bhopal, India",
+    media: [
+      {
+        type: "video",
+        url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/mov_bbb.mp4"
+      },
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/movie.mp4"
+      },
+      {
+        type: "video",
+        url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      },
+      {
+        type: "video",
+        url: "https://www.w3schools.com/html/mov_bbb.mp4"
+      }
+    ],
+    caption: "No shortcuts, just consistency. One workout at a time. 💪",
+    hashtags: ["FitnessJourney", "GymLife", "StayConsistent"],
+    likes: 2187,
+    comments: 76,
+    reposts: 51,
+    shares: 32,
+    createdAt: "18h",
+    isLiked: false,
+    isSaved: true
+  },
+  {
+    id: 10,
+    username: "sana.aesthetic",
+    fullName: "Sana Khan",
+    avatar: "https://i.pravatar.cc/150?img=48",
+    verified: false,
+    location: "Paris, France",
+    media: [
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1080&q=85"
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1080&q=85"
+      }
+    ],
+    caption: "Romanticizing life, one little moment at a time. 🥐☕✨",
+    hashtags: ["Paris", "Aesthetic", "LifeLately"],
+    likes: 7843,
+    comments: 219,
+    reposts: 96,
+    shares: 74,
+    createdAt: "1d",
+    isLiked: false,
+    isSaved: false
+  }
+];
+
+
 const Home = () => {
   return (
     <div className='home w-full'>
@@ -32,10 +368,11 @@ const Home = () => {
         </div>
       </div>
       <div className="recent-posts-section flex flex-col">
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {
+          postsData.map(post => (
+            <PostCard post={post} />
+          ))
+        }
       </div>
     </div>
   )

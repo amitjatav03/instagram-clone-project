@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "remixicon": "^4.9.1"
+    "remixicon": "^4.9.1",
+    "swiper": "^14.3.0"
   }
 }
